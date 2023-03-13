@@ -1,84 +1,93 @@
-!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <div class="container mx-auto w-5/12 py-10 shadow-md">
-        <form class="w-full max-w-sm" id="user-form">
-            <div class="md:flex md:items-center mb-6">
-              <div class="md:w-1/3">
-                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="name">
-                  Name
-                </label>
-              </div>
-              <div class="md:w-2/3">
-                <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 focus:invalid:border-pink-500" id="name" type="text" placeholder="enter full name here">
-              </div>
-            </div>
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                  <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="email">
-                    Email
-                  </label>
-                </div>
-                <div class="md:w-2/3">
-                  <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 focus:invalid:border-pink-500" id="email" type="email" placeholder="enter email here">
-                </div>
-              </div>
-            <div class="md:flex md:items-center mb-6">
-              <div class="md:w-1/3">
-                <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="password">
-                  Password
-                </label>
-              </div>
-              <div class="md:w-2/3">
-                <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 focus:invalid:border-pink-500" id="password" type="password" placeholder="******************">
-              </div>
-            </div>
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                  <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="dob">
-                    Date of Birth
-                  </label>
-                </div>
-                <div class="md:w-2/3">
-                  <input required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 focus:invalid:border-pink-500" max="2005-01-11" min="1968-01-11" id="dob" type="date">
-                </div>
-              </div>
-            <div class="md:flex md:items-center mb-6">
-              <div class="md:w-1/3"></div>
-              <label class="md:w-2/3 block text-gray-500 font-bold" for="accept-terms">
-                <input required class="mr-2 leading-tight" type="checkbox" id="accept-terms">
-                <span class="text-sm">
-                  Accept Terms!
-                </span>
-              </label>
-            </div>
-            <div class="md:flex md:items-center">
-              <div class="md:w-1/3"></div>
-              <div class="md:w-2/3">
-                <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " 
-                  type="submit">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </form>
-          
-    </div>
-    <div class="relative bg-white px-6 mt-5 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:rounded-lg sm:px-10">
-      <div class="mx-auto">
-        <h2 class="text-3xl text-center font-bold leading-tight">Entries</h2>
-        <div class="divide-y divide-gray-300/50" id="userEntriesDiv"></div>
-
-      </div>
-
-    </div>
-<script src="./rigestration.js"> </script>
-</body>
-</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        border: 2px solid #ddd;
+        width: 60%;
+        max-width: 800px;
+        background-color: #fff;
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+      }
+      table td {
+        padding: 12px 15px;
+      }
+      table tr {
+        border-bottom: 1px solid #ddd;
+      }
+      table th {
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #f2f2f2;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"],
+      input[type="checkbox"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+      }
+      button[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        margin-top: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <form id="registration-form">
+      <table>
+        <tr>
+          <th>Name</th>
+          <td><input type="text" id="name" name="name"></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><input type="email" id="email" name="email"></td>
+        </tr>
+        <tr>
+          <th>Password</th>
+          <td><input type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+          <th>Date of Birth</th>
+          <td><input type="date" id="dob" name="dob"></td>
+        </tr>
+        <tr>
+          <th>Accepted terms?</th>
+          <td><input type="checkbox" id="terms" name="terms"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="submit">Submit</button></td>
+        </tr>
+      </table>
+    </form>
+    <script src="./rigestration.js"></script>
+  
