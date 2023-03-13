@@ -90,5 +90,22 @@
         <!-- User entries will be added here via JavaScript -->
       </tbody>
     </table>
+    <script>
+      // JavaScript code for handling the registration form and table
+      const form = document.getElementById('registrationForm');
+      const table = document.getElementById('userTable');
+      const tbody = table.querySelector('tbody');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // prevent form submission
+
+        // Get form values
+        const name = form.elements['name'].value;
+        const email = form.elements['email'].value;
+        const password = form.elements['password'].value;
+        const dob = form.elements['dob'].value;
+        const terms = form.elements['terms'].checked;
+
+        // Validate email and age
 
   
