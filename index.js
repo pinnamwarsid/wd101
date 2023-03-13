@@ -1,52 +1,44 @@
-let userform= document.getElementById("user-fora");
-const retrieveentrie=()=> { 
-  let entries = localStorage.getItem("user-entries");
-  if (entries){
-    entries = JSON.parse(entries);
-  } else{
-    entries=[];
+const form = document.querySelector('#registration-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
+const dobInput = document.querySelector('#dob');
+const acceptedTermsInput = document.querySelector('#accepted-terms');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  //Validate email address
+  if (!isValidEmail(emailInput.value)) {
+    showErrorMessage(emailInput, 'Invalid email address');
+    return;
   }
-  return entries;
-}
-let userEnteries = retrieveentrie();
 
-const displayEntries =()=>{
-  const entries = retrieveEntries();
-
-
-
-   const tableEntries=entries.map((entry) =>{
-    const nameCell = '<td class=',border px-4 py-2'>${entry.name}</td>';
-    const emailCell = '<td class=',border px-4 py-2'>${entry.email}</td>';
-    const passwordCell = '<td class='border px-4 py-2'>${entry.password}</td>';
-    const dobCell = '<td class='border px-4 py-2'>${entry.dob}</td>';
-    const acceptTermsCell = '<td class='border px-4 py-2'>${entry.acceptTermsAndconditions}</td>';
-
-    const row='<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsAndconditions}</tr>';
-    return row;
-  }).join()
+  // Validate age
+  const age = calculateAge(new Date(dobInput.value));
+  if (age < 18 || age > 55) {
+    showErrorMessage(dobInput, 'Age must be between 18 and 55');
+    return;
   }
-  const saveUserForm =(Event) =>{
-    Event.preventDefault();
-    const name=document.getElementById("name").Value;
-    const email=document.getElementById("email").Value;
-    const password=document.getElementById("password").Value;
-    const dob=document.getElementById("dob").Value;
 
-    const acceptTermsAndconditions=document.getElementById("acceptTerms").ariaChecked;
-    const entry={
-      name,
-      email,
-      password,
-      dob,
-      acceptTermsAndconditions
+  // Clear any existing error messages
+  clearErrorMessages();
 
-    };
-    userEnteries.push(entry);
-    localStorage.setItem("user-entries",JSON.stringify(userEntries));
-    displayEntries();
-    
+  // Create new registration entry
+  const registration = {
+    name: nameInput.value,
+    email: emailInput.value,
+    password: passwordInput.value,
+    dob: dobInput.value,
+    acceptedTerms: acceptedTermsInput.checked
+  };
 
-  }
-  userform.addEventListener("submit",saveUserForm);
-  displayEntries();
+  // Save registration to local storage
+  saveRegistration(registration);
+
+  // Reset form
+  form.reset();
+
+  // Show success message
+  alert('Registration successful!');
+});
