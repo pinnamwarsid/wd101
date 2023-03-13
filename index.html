@@ -1,69 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width-device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindess.com"></script>
-  <title>Registration Form</title>
-  <style>
-  input #name:invalid{
-    border: 1px solid red;
-    }
-  </style>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      /* CSS styling for the table and form */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      form {
+        border: 2px solid black;
+        padding: 10px;
+        width: 50%;
+        margin: auto;
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+        margin-bottom: 10px;
+      }
+      input[type=text], input[type=email], input[type=password], input[type=date] {
+        width: 70%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+      }
+      input[type=checkbox] {
+        margin-bottom: 10px;
+      }
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+      .error {
+        color: red;
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
-    <div class="relative flex mim-h-screen flex-col justify-center overflow-hidden py-6 bg-gray-50">
-       <div
-            class="relative bg-white px-6 pt-6 pb-5 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg sm:rounded-lg sm:px-10">
-            <div class="mx-auto max-w-md">
-            <h2 class="text-3xl text-center font-bold leading-tight">
-              Registration Form
-            </h2>
-            <div class="divide-y divide-gray-300/50">
-              <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-                <form id="uses_name">
-                  <label for="name" class="text-md w-40 initial-block font medium leading-5 text-gray-700">
-                    name
-                  </label>
-                  <input required type="text" id="name" name="name"
-                     class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                     placeholder="Enter full name"></br>
-                  <label for ="email" class="text-md w-40 initial-block font-medium leading-5 text-gray-700">
-                    email
-                  </label>  
-                  <input type="text" id="email" name="email"
-                       class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:invalid:border-pink-500 focus:initial:ring-pink-500"
-                       placeholder="Enter email"></br>                      
-                  <label for="password" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
-                        Password
-                  </label>
-                  <input required type="password" id="password" name="password" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 te focus:invalid:border-pink-500 focus:invalid: ring-pink-500"
-                      placeholder="Enter password"></br>
-                  <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">
-                      Date of Birth
-                  </label>
-                    <input required type="date" id="dob" name="dob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus: invalid:border-pink-500 focus:invalid: ring-pink-500"></br>
-                  <label for="acceptTerms"
-                      class="text-md w-50 inline-block font-medium leading-5 text-gray-700"> Accept Terms & Conditions
-                  </label>
-                      <input type="checkbox" id="acceptTerms" name="acceptTerms" 
-                          class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gray-500 focus:outline-none focus: focus:placeholder-gray-500 focus: invalid:border-pink-500 focus:invalid: ring-pink-500"></br> 
-                          
-                  <button type="submit"
-                        class="w-fit  rounded-lg shadow-lg px-8 py-4 bg-green-500 text-white hover:bg-green-400 focus:outline-none focus:shadow-outline trancation duration"></br>
-                           submit
-                  </button>
-                </form>
-              </div>
-            </div>
-        </div>
-    </div>
-  </div>
-<script src="rigestration.js" ></script>
-  </body>
-</html>
->
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required><br>
+
+      <label for="terms">Accepted Terms?</label>
+      <input type="checkbox" id="terms" name="terms" required><br>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <h2>Registered Users</h2>
+    <table id="userTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>DOB</th>
+          <th>Accepted Terms?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- User entries will be added here via JavaScript -->
+      </tbody>
+    </table>
+
   
