@@ -1,32 +1,52 @@
+let userform= document.getElementById("user-fora");
+const retrieveentrie=()=> { 
+  let entries = localStorage.getItem("user-entries");
+  if (entries){
+    entries = JSON.parse(entries);
+  } else{
+    entries=[];
+  }
+  return entries;
+}
+let userEnteries = retrieveentrie();
 
-// Get the form and input elements
-const form = document.querySelector('#myForm');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
-const dobInput = document.querySelector('#dob');
-const termsInput = document.querySelector('#terms');
+const displayEntries =()=>{
+  const entries = retrieveEntries();
 
-// Listen for the form submit event
-form.addEventListener('submit', (e) => {
-  e.preventDefault(); // prevent form submission
 
-  // Get the input values
-  const name = nameInput.value;
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  const dob = dobInput.value;
-  const terms = termsInput.checked;
 
-  // Store the input values in an object
-  const userDetails = {
-    name,
-    email,
-    password,
-    dob,
-    terms
-  };
+   const tableEntries=entries.map((entry) =>{
+    const nameCell = '<td class=',border px-4 py-2'>${entry.name}</td>';
+    const emailCell = '<td class=',border px-4 py-2'>${entry.email}</td>';
+    const passwordCell = '<td class='border px-4 py-2'>${entry.password}</td>';
+    const dobCell = '<td class='border px-4 py-2'>${entry.dob}</td>';
+    const acceptTermsCell = '<td class='border px-4 py-2'>${entry.acceptTermsAndconditions}</td>';
 
-  // Do something with the userDetails object
-  console.log(userDetails);
-});
+    const row='<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsAndconditions}</tr>';
+    return row;
+  }).join()
+  }
+  const saveUserForm =(Event) =>{
+    Event.preventDefault();
+    const name=document.getElementById("name").Value;
+    const email=document.getElementById("email").Value;
+    const password=document.getElementById("password").Value;
+    const dob=document.getElementById("dob").Value;
+
+    const acceptTermsAndconditions=document.getElementById("acceptTerms").ariaChecked;
+    const entry={
+      name,
+      email,
+      password,
+      dob,
+      acceptTermsAndconditions
+
+    };
+    userEnteries.push(entry);
+    localStorage.setItem("user-entries",JSON.stringify(userEntries));
+    displayEntries();
+    
+
+  }
+  userform.addEventListener("submit",saveUserForm);
+  displayEntries();
